@@ -6,12 +6,33 @@
             // Robotarm bibliotheek inladen
             var canvas = document.getElementById("canvas");
             var robotArm = new RobotArm(canvas);
+            robotArm.speed = 500;
             
             // Het level inladen
             robotArm.loadLevel("exercise 7");
             
             // Jou instructies volgen hier
-            
+            for (var i = 1; i <= 5; i++) {
+                for (var j = 1; j <= 6; j++) { // verplaatst de hele stapel blokken 1 plek naar links
+                    robotArm.moveRight();
+                    robotArm.grab();
+                    robotArm.moveLeft();
+                    robotArm.drop();
+                }
+                robotArm.moveRight();
+                robotArm.moveRight();
+            }
+            robotArm.moveLeft();
+
+
+            // for (var i = 1; i <= 5; i++) {
+            //     robotArm.moveRight();
+            //     robotArm.moveRight();
+            //     robotArm.grab();
+            //     robotArm.moveLeft();
+            //     robotArm.drop();
+            // }
+
             
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();
