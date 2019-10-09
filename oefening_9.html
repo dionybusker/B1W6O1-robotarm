@@ -6,12 +6,43 @@
             // Robotarm bibliotheek inladen
             var canvas = document.getElementById("canvas");
             var robotArm = new RobotArm(canvas);
+            robotArm.speed = 500;
             
             // Het level inladen
             robotArm.loadLevel("exercise 9");
             
             // Jou instructies volgen hier
-            
+            for (var h = 1; h <= 4; h++) {
+                for (var i = 1; i <= 4; i++) {
+                    for (var j = 1; j <= i; j++) {
+                        robotArm.grab();
+                    }
+                    for (var k = 1; k <= 5; k++) {
+                        robotArm.moveRight();
+                    }
+                    robotArm.drop();
+                    for (var l = 1; l <= 5; l++) {
+                        robotArm.moveLeft();
+                    }
+                }
+                robotArm.moveRight();
+            }
+
+
+            // for (var i = 1; i <= 4; i++) { // aantal stapels blokken
+            //     for (var j = 1; j <= 5; j++) { // hoeveel plekken naar rechts
+            //         robotArm.grab();
+            //         robotArm.moveRight();
+            //     }
+            //     robotArm.drop();
+            //     for (var k = 1; k <= 4; k++) { // hoeveel plekken naar links
+            //         robotArm.moveLeft();
+            //     }
+            // }
+
+
+
+
             
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();
