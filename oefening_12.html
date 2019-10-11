@@ -6,12 +6,27 @@
             // Robotarm bibliotheek inladen
             var canvas = document.getElementById("canvas");
             var robotArm = new RobotArm(canvas);
+            robotArm.speed = 500;
             
             // Het level inladen
             robotArm.loadLevel("exercise 12");
             
             // Jou instructies volgen hier
-            
+            for (column = 1; column <= 9; column++) {
+                robotArm.grab();
+                if (robotArm.scan() == "red") { // er wordt gescand of het blokje rood is
+                    for (right = 1; right <= 10 - column; right++) { // alle rode blokken worden helemaal rechts geplaatst
+                        robotArm.moveRight();
+                    }
+                    robotArm.drop();
+                    for (left = 1; left <= right - 1; left++) { // de grijper gaat terug naar links en checkt het volgende blokje, behalve de allerlaatste
+                        robotArm.moveLeft();
+                    }
+                } else {
+                    robotArm.drop();
+                }
+                robotArm.moveRight(); // het volgende blokje wordt gecheck
+            }
             
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();
