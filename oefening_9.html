@@ -12,14 +12,14 @@
             robotArm.loadLevel("exercise 9");
             
             // Jou instructies volgen hier
-            for (var column = 1; column <= 4; column++) {
-                for (var block = 1; block <= column; block++) {
+            for (var column = 1; column <= 4; column++) { // for loop voor het verplaatsen van alle stapels
+                for (var block = 1; block <= column; block++) { // for loop voor het verplaatsen van alle blokken
                     robotArm.grab();
-                    for (var right = 1; right <= 5; right++) {
+                    for (var right = 1; right <= 5; right++) { // for loop voor het verplaatsen van 1 blok
                         robotArm.moveRight();
                     }
                     robotArm.drop();
-                    for (var left = 1; left <= 5; left++) {
+                    for (var left = 1; left <= 5; left++) { // for loop voor het bewegen naar links
                         robotArm.moveLeft();
                     }
                 }
